@@ -1,0 +1,97 @@
+// Import der Angular Material Theming Funktionen
+@use '@angular/material' as mat;
+
+// Definieren der Markenfarben
+$primary-palette: (
+  50: #e3f2fd,
+  100: #bbdefb,
+  500: #2196f3,  // Hauptfarbe
+  700: #1976d2,  // Dunklere Variante
+  900: #0d47a1,  // Noch dunklere Variante
+  contrast: (
+    50: rgba(0,0,0,0.87),
+    100: rgba(0,0,0,0.87),
+    500: white,
+    700: white,
+    900: white,
+  )
+);
+
+$accent-palette: (
+  50: #fce4ec,
+  100: #f8bbd0,
+  500: #e91e63,  // Hauptfarbe
+  700: #c2185b,  // Dunklere Variante
+  900: #880e4f,  // Noch dunklere Variante
+  contrast: (
+    50: rgba(0,0,0,0.87),
+    100: rgba(0,0,0,0.87),
+    500: white,
+    700: white,
+    900: white,
+  )
+);
+
+// Erstellen der Theme-Paletten
+$primary: mat.define-palette($primary-palette);
+$accent: mat.define-palette($accent-palette);
+$warn: mat.define-palette(mat.$red-palette);
+
+// Definieren der benutzerdefinierten Typografie
+$custom-typography: mat.define-typography-config(
+  $font-family: '"Galano Grotesque Alt", Roboto, sans-serif',
+  $headline-1: mat.define-typography-level(96px, 96px, 300, $letter-spacing: -1.5px),
+  $headline-2: mat.define-typography-level(60px, 60px, 300, $letter-spacing: -0.5px),
+  $headline-3: mat.define-typography-level(48px, 50px, 400),
+  $headline-4: mat.define-typography-level(34px, 40px, 400),
+  $headline-5: mat.define-typography-level(24px, 32px, 400),
+  $headline-6: mat.define-typography-level(20px, 28px, 500),
+  $subtitle-1: mat.define-typography-level(16px, 24px, 400),
+  $subtitle-2: mat.define-typography-level(14px, 22px, 500),
+  $body-1: mat.define-typography-level(16px, 24px, 400),
+  $body-2: mat.define-typography-level(14px, 20px, 400),
+  $caption: mat.define-typography-level(12px, 16px, 400),
+  $button: mat.define-typography-level(14px, 14px, 500),
+  input	None	None	Form input fields.
+);
+
+// Light Theme Konfiguration
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn
+  ),
+  typography: $custom-typography,
+  density: 0
+));
+
+// Dark Theme Konfiguration
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn
+  ),
+  typography: $custom-typography,
+  density: 0
+));
+
+// Theme Klassen
+.light-theme {
+  @include mat.all-component-themes($light-theme);
+  
+  // Benutzerdefinierte Variablen für Light Mode
+  --background-color: #ffffff;
+  --text-color: rgba(0, 0, 0, 0.87);
+  --surface-color: #f5f5f5;
+}
+
+.dark-theme {
+  @include mat.all-component-themes($dark-theme);
+  
+  // Benutzerdefinierte Variablen für Dark Mode
+  --background-color: #121212;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --surface-color: #1e1e1e;
+} 

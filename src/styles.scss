@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use 'styles/custom-theme';
+
+// Globale Stile
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Galano Grotesque Alt', Roboto, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease;
+}
